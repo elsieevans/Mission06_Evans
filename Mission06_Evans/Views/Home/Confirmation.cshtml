@@ -1,0 +1,13 @@
+@model Mission06_Evans.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Added";
+}
+
+<div class="text-center">
+    <h2>Success!</h2>
+    <p><strong>@Model.Title</strong> has been added to the Joel Hilton Movie Collection.</p>
+    <hr />
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+    <a asp-controller="Home" asp-action="AddMovie" class="btn btn-primary">Add Another Movie</a>
+</div>
