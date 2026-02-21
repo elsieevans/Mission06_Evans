@@ -223,3 +223,4 @@
 /Users/elsieevans/RiderProjects/Mission06_Evans/Mission06_Evans/obj/Debug/net10.0/Mission06_Evans.pdb
 /Users/elsieevans/RiderProjects/Mission06_Evans/Mission06_Evans/obj/Debug/net10.0/Mission06_Evans.genruntimeconfig.cache
 /Users/elsieevans/RiderProjects/Mission06_Evans/Mission06_Evans/obj/Debug/net10.0/ref/Mission06_Evans.dll
+/Users/elsieevans/RiderProjects/Mission06_Evans/Mission06_Evans/obj/Debug/net10.0/Mission06_Evans.sourcelink.json

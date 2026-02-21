@@ -1,61 +1,75 @@
-@model Mission06_Evans.Models.Movie
+@using Mission06_Evans.Models
+@model Movie
 
-@{
-    ViewData["Title"] = "Add Movie to Collection";
-}
+<!-- // This view is strongly typed to the Movie model -->
+<div class="container mt-4">
+    
+    <!-- // Page title -->
+    <h2>Add a Movie</h2>
 
-<h1>Enter a New Movie</h1>
+    <!-- // Displays validation errors at the top if something is missing or incorrect -->
+    <div asp-validation-summary="All" class="text-danger"></div>
 
-<form method="post">
-    <div class="form-group">
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" class="form-control" required />
-    </div>
+    <!-- // Form that posts back to the AddMovie POST method -->
+    <form method="post">
 
-    <div class="form-group">
-        <label asp-for="Title">Title:</label>
-        <input asp-for="Title" class="form-control" required />
-    </div>
+        <!-- // Movie Title (Required) -->
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Year">Year:</label>
-        <input asp-for="Year" class="form-control" required />
-    </div>
+        <!-- // Movie Year (Must be 1888 or later) -->
+        <div class="mb-3">
+            <label asp-for="Year" class="form-label"></label>
+            <input type="number" asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Director">Director:</label>
-        <input asp-for="Director" class="form-control" required />
-    </div>
+        <!-- // Director (Optional field) -->
+        <div class="mb-3">
+            <label asp-for="Director" class="form-label"></label>
+            <input asp-for="Director" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Rating">Rating:</label>
-        <select asp-for="Rating" class="form-control" required>
-            <option value="">Select a Rating</option>
-            <option value="G">G</option>
-            <option value="PG">PG</option>
-            <option value="PG-13">PG-13</option>
-            <option value="R">R</option>
-        </select>
-    </div>
+        <!-- // Category ID (Required number that links to category table) -->
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label"></label>
+            <input type="number" asp-for="CategoryId" class="form-control" />
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Edited">Edited (Yes/No):</label>
-        <select asp-for="Edited" class="form-control">
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
-    </div>
+        <!-- // Rating dropdown (Optional selection) -->
+        <div class="mb-3">
+            <label asp-for="Rating" class="form-label"></label>
+            <select asp-for="Rating" class="form-control">
+                <option value="">Select Rating</option>
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="LentTo">Lent To:</label>
-        <input asp-for="LentTo" class="form-control" />
-    </div>
+        <!-- // Edited radio buttons (Required Yes/No choice) -->
+        <div class="mb-3">
+            <label class="form-label">Edited</label><br />
+            <input type="radio" asp-for="Edited" value="true" /> Yes
+            <input type="radio" asp-for="Edited" value="false" /> No
+            <span asp-validation-for="Edited" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Notes">Notes (Max 25 characters):</label>
-        <textarea asp-for="Notes" class="form-control" maxlength="25"></textarea>
-    </div>
+        <!-- // Copied to Plex radio buttons (Required Yes/No choice) -->
+        <div class="mb-3">
+            <label class="form-label">Copied To Plex</label><br />
+            <input type="radio" asp-for="CopiedToPlex" value="true" /> Yes
+            <input type="radio" asp-for="CopiedToPlex" value="false" /> No
+            <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+        </div>
 
-    <br />
-    <button type="submit" class="btn btn-primary">Add Movie</button>
-</form>
+        <!-- // Submit button to save the movie -->
+        <button type="submit" class="btn btn-primary">Save Movie</button>
+
+    </form>
+</div>

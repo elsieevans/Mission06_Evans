@@ -1,0 +1,47 @@
+@using Mission06_Evans.Models
+@model List<Movie>
+
+@{
+    // // Student Comment: Setting page title for the full collection table
+    ViewData["Title"] = "Movie Collection";
+}
+
+<div class="container mt-4">
+    <h2>Joel's Movie Collection</h2>
+
+    @* // // Student Comment: Using Bootstrap for a professional table look *@
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Plex</th>
+            <th>Notes</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Title</td>
+                <td>@m.CategoryId</td>
+                <td>@m.Year</td>
+                <td>@m.Director</td>
+                <td>@m.Rating</td>
+                <td>@(m.Edited ? "Yes" : "No")</td>
+                <td>@(m.CopiedToPlex ? "Yes" : "No")</td>
+                <td>@m.Notes</td>
+                @* // // Student Comment: Action links for Edit and Delete *@
+                <td><a class="btn btn-sm btn-warning" asp-controller="Home" asp-action="Edit" asp-route-id="@m.MovieId">Edit</a></td>
+                <td><a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@m.MovieId">Delete</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
